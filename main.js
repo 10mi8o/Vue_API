@@ -6,7 +6,15 @@ var app = new Vue({
   mounted: function(){
     axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
     .then(function(response){
-      console.log(response)
+      this.bpi = response.data.bpi
+    }.bind(this))
+    .catch(function(error){
+      console.log(error)
     })
+  },
+  filters: {
+    currencyDecimal(value){
+      return value.toFixed(2)
+    }
   }
 })
