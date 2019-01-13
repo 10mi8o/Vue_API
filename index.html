@@ -8,6 +8,10 @@
 
   <style>
 
+    [v-cloak] {
+      display: none;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -21,12 +25,17 @@
 </head>
 <body>
   <div id="app">
-    <h3>Rate</h3>
-    <ul>
-      <li v-for="(rate, currency) in bpi">
-        {{ currency }} : {{rate.rate_float | currencyDecimal }}
-      </li>
-    </ul>
+    <h3>Price</h3>
+    <div v-if="hasError">
+      Error...
+    </div>
+    <div v-else>
+      <ul v-cloak>
+          <li v-for="(rate, currency) in bpi">
+            {{ currency }} : {{rate.rate_float | currencyDecimal }}
+          </li>
+        </ul>
+    </div>
 
     
   </div>
