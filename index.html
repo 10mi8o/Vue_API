@@ -30,11 +30,16 @@
       Error...
     </div>
     <div v-else>
+      <div v-if="loading">
+        Loading...
+      </div>
+      <div v-else>
       <ul v-cloak>
           <li v-for="(rate, currency) in bpi">
             {{ currency }} : {{rate.rate_float | currencyDecimal }}
           </li>
         </ul>
+      </div>
     </div>
 
     
